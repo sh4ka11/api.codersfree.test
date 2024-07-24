@@ -1,38 +1,14 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\RegisterController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\Register;
 
-
-Route::get('/', function () {
-    return view('welcome');
-    
-});
-
-Route::get('users/{id}', function ($id) {
-    
-});
-
-// Route::get('/prueba', function()){
-//     Return 'prueba';
+// Route::get('/', function () {
+//     return view('welcome');
 // });
 
-
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
-
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
+// Route::get('/prueba', function() {
+//     return 'prueba';
 // });
 
-Route::post('register', [Register::class, 'store'])->name('api.v1.registrer');
+Route::post('register', [RegisterController::class, 'store'])->name('api.v1.register');

@@ -10,38 +10,24 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    /**
-     * The path to the "home" route for your application.
-     *
-     * Typically, users are redirected here after authentication.
-     *
-     * @var string
-     */
     public const HOME = '/home';
 
-    /**
-     * Define your route model bindings, pattern filters, and other route configuration.
-     */
     public function boot(): void
     {
         $this->configureRateLimiting();
 
         $this->routes(function () {
-            Route::middleware('api')
-                ->prefix('v1')
-                ->namespace($this->namespace)
+            Route::prefix('v1')
+                ->middleware('api')
+                ->namespace('App\Http\Controllers\Api')
                 ->group(base_path('routes/api-v1.php'));
 
             Route::middleware('web')
-            ->namespace($this->namespace)
+                ->namespace('App\Http\Controllers')
                 ->group(base_path('routes/web.php'));
-                
         });
     }
 
-    /**
-     * Configure the rate limiters for the application.
-     */
     protected function configureRateLimiting(): void
     {
         RateLimiter::for('api', function (Request $request) {

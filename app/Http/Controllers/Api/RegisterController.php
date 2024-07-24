@@ -1,22 +1,23 @@
 <?php
 
+// app/Http/Controllers/Api/RegisterController.php
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 use App\Models\User;
 
-class Register extends Controller
+class RegisterController extends Controller
 {
-    public function Store (Request $request){
+    public function store(Request $request)
+    {
         $request->validate([
             'name' => 'required|string|max:255',
             'password' => 'required|string|min:8',
-
         ]);
-        $user = User::create($request->all());
-        return response($user, 200);
 
+        $user = User::create($request->all());
+
+        return response($user, 200);
     }
 }
