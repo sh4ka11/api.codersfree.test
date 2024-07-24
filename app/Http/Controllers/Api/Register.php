@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\user;
+
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class Register extends Controller
 {
@@ -14,6 +15,8 @@ class Register extends Controller
             'password' => 'required|string|min:8',
 
         ]);
-        //$user = User::create($request->all());
+        $user = User::create($request->all());
+        return response($user, 200);
+
     }
 }

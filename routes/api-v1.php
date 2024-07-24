@@ -2,12 +2,22 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\Register;
 
 
 Route::get('/', function () {
     return view('welcome');
     
 });
+
+Route::get('users/{id}', function ($id) {
+    
+});
+
+// Route::get('/prueba', function()){
+//     Return 'prueba';
+// });
+
 
 
 /*
@@ -25,4 +35,4 @@ Route::get('/', function () {
 //     return $request->user();
 // });
 
-//Route::post('register', [RegisterController::class, 'store'])->name('api.v1.registrer');
+Route::post('register', [Register::class, 'store'])->name('api.v1.registrer');
